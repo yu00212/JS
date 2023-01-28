@@ -101,43 +101,44 @@ console.log(val1);
 /**
  * デフォルト値、引数など
  */
-// (name = 'ゲスト')でゲスト値を設定、関数呼び出しの引数で上書き設定可能
-// const sayHello = (name = 'ゲスト') => console.log(`こんにちは!${name}さん！`);
-// sayHello("ジャケ");
+// const sayHello = (name) => console.log(`こんにちは!${name}さん！`);
+// sayHello();
 
 /**
- * スプレッド構文 ...
+ * mapやfilterを使った配列の処理
  */
-// 配列の展開
-const arr1 = [1, 2];
-console.log(arr1); // [1, 2]　配列
-console.log(...arr1); // 1 2 配列ではなく、実際の１と２として表示される
+const nameArr = ["田中", "山田", "又吉"];
+for (let index = 0; index < nameArr.length; index++) {
+    console.log(`${index}番目は${nameArr[index]}です`); // 0番目は田中です
+    console.log(`${index + 1}番目は${nameArr[index]}です`); // 1番目は田中です
+}
 
-const sumFunc = (num1, num2) => console.log(num1 + num2); // 3
-sumFunc(arr1[0], arr1[1]);
-sumFunc(...arr1); // 3 順番に処理する
+// nameArrのnameが順番に入って新しい配列として生成される
+// ①returnされた結果に基づいて新しい配列を生成する使い方
+const nameArr2 = nameArr.map((name)=>{
+    return name;
+})
+console.log(nameArr2); // ["田中", "山田", "又吉"]
 
-// まとめる
-const arr2 = [1, 2, 3, 4, 5];
-const [num1, num2, ...arr3] = arr2;
-console.log(num1); // 1
-console.log(num2); // 2
-console.log(arr3); // [3, 4, 5]
+// ②配列をループで処理するだけのやり方もある
+nameArr.map((name) => console.log(name));
 
-// 配列のコピー、結合
-const arr4 = [10, 20];
-const arr5 = [30, 40];
+nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`)); // 1番目は田中です
 
-const arr6 = [...arr4];
-arr6[0] = 100;
-console.log(arr6); // [100, 20]
-console.log(arr4); // [10, 20]
+// filter:return文に書いた条件式に当てはまる値を新しく取得できる
+// 配列の中にある値に対してある条件に当てはまる値だけを取り出したい時に使える
+const numArr = [1, 2, 3, 4, 5];
+const newNumArr = numArr.filter((num) => {
+    return num % 2 === 1;
+});
+console.log(newNumArr); // [1, 3, 5]
 
-const arr7 = [...arr4, ...arr5];
-console.log(arr7); // [10, 20, 30, 40]
+const newNameArr = nameArr.map((name) => {
+    if (name === "又吉") {
+        return name
+    } else {
+        return `${name}さん`
+    }
+})
+console.log(newNameArr); // ["田中さん", "山田さん", "又吉"]
 
-// =でコピーしてしまうと同じとこを参照するので、参照元の配列も影響でてしまう
-const arr8 = arr4;
-console.log(arr8); // [10, 20]
-arr8[0] = 100; // [100, 20]
-console.log(arr4); // [100, 20]
