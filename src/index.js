@@ -102,6 +102,42 @@ console.log(val1);
  * デフォルト値、引数など
  */
 // (name = 'ゲスト')でゲスト値を設定、関数呼び出しの引数で上書き設定可能
-const sayHello = (name = 'ゲスト') => console.log(`こんにちは!${name}さん！`);
-sayHello("ジャケ");
+// const sayHello = (name = 'ゲスト') => console.log(`こんにちは!${name}さん！`);
+// sayHello("ジャケ");
 
+/**
+ * スプレッド構文 ...
+ */
+// 配列の展開
+const arr1 = [1, 2];
+console.log(arr1); // [1, 2]　配列
+console.log(...arr1); // 1 2 配列ではなく、実際の１と２として表示される
+
+const sumFunc = (num1, num2) => console.log(num1 + num2); // 3
+sumFunc(arr1[0], arr1[1]);
+sumFunc(...arr1); // 3 順番に処理する
+
+// まとめる
+const arr2 = [1, 2, 3, 4, 5];
+const [num1, num2, ...arr3] = arr2;
+console.log(num1); // 1
+console.log(num2); // 2
+console.log(arr3); // [3, 4, 5]
+
+// 配列のコピー、結合
+const arr4 = [10, 20];
+const arr5 = [30, 40];
+
+const arr6 = [...arr4];
+arr6[0] = 100;
+console.log(arr6); // [100, 20]
+console.log(arr4); // [10, 20]
+
+const arr7 = [...arr4, ...arr5];
+console.log(arr7); // [10, 20, 30, 40]
+
+// =でコピーしてしまうと同じとこを参照するので、参照元の配列も影響でてしまう
+const arr8 = arr4;
+console.log(arr8); // [10, 20]
+arr8[0] = 100; // [100, 20]
+console.log(arr4); // [100, 20]
