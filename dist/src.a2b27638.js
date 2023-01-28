@@ -123,6 +123,53 @@ parcelRequire = (function (modules, cache, entry, globalName) {
  */
 var val1 = "var変数";
 console.log(val1);
+
+// var変数は上書き可能
+// val1 = "var変数を上書き";
+// console.log(val1);
+
+// val1 = "上書き";
+// console.log(val1);
+
+// letは上書き可能だが、再宣言ができない
+
+// let = val2 = "let変数";
+// val2 = "上書き";
+// console.log(val2);
+// let = val2 = "再宣言";
+
+// constはどちらもできない
+// const val3 = "上書きも再宣言もできない";
+// console.log(val3);
+
+// constで定義したオブジェクトはプロパティの変更が可能
+// const val4 = {
+//     name: "ジャケ",
+//     age: 28,
+// };
+// val4.name = "jak";
+// val4.adress = "Fukushima";
+// console.log(val4);
+
+// constで定義したオブジェクトは配列の変更が可能
+// const val5 = ['dog', 'cat'];
+// val5[0] = "bird";
+// val5.push("monkey"); 
+// consokle.log(val5); // ["bird", "cat", "monkey"]
+
+/**
+ * テンプレート文字列
+ */
+
+var name = "ジャケ";
+var age = 28;
+
+// 従来の方法
+var message1 = "私の名前は" + name + "です。年齢は" + age + "歳です。";
+console.log(message1);
+
+// テンプレート文字列を用いた方法
+var message2 = "\u79C1\u306E\u540D\u524D\u306F".concat(name, "\u3067\u3059\u3002\u5E74\u9F62\u306F").concat(age, "\u3067\u3059\u3002");
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -148,7 +195,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45929" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46531" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
