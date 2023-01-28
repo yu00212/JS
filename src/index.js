@@ -107,38 +107,61 @@ console.log(val1);
 /**
  * mapやfilterを使った配列の処理
  */
-const nameArr = ["田中", "山田", "又吉"];
-for (let index = 0; index < nameArr.length; index++) {
-    console.log(`${index}番目は${nameArr[index]}です`); // 0番目は田中です
-    console.log(`${index + 1}番目は${nameArr[index]}です`); // 1番目は田中です
+// const nameArr = ["田中", "山田", "又吉"];
+// for (let index = 0; index < nameArr.length; index++) {
+//     console.log(`${index}番目は${nameArr[index]}です`); // 0番目は田中です
+//     console.log(`${index + 1}番目は${nameArr[index]}です`); // 1番目は田中です
+// }
+
+// // nameArrのnameが順番に入って新しい配列として生成される
+// // ①returnされた結果に基づいて新しい配列を生成する使い方
+// const nameArr2 = nameArr.map((name)=>{
+//     return name;
+// })
+// console.log(nameArr2); // ["田中", "山田", "又吉"]
+
+// // ②配列をループで処理するだけのやり方もある
+// nameArr.map((name) => console.log(name));
+
+// nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`)); // 1番目は田中です
+
+// // filter:return文に書いた条件式に当てはまる値を新しく取得できる
+// // 配列の中にある値に対してある条件に当てはまる値だけを取り出したい時に使える
+// const numArr = [1, 2, 3, 4, 5];
+// const newNumArr = numArr.filter((num) => {
+//     return num % 2 === 1;
+// });
+// console.log(newNumArr); // [1, 3, 5]
+
+// const newNameArr = nameArr.map((name) => {
+//     if (name === "又吉") {
+//         return name
+//     } else {
+//         return `${name}さん`
+//     }
+// })
+// console.log(newNameArr); // ["田中さん", "山田さん", "又吉"]
+
+/**
+ * 三項演算子
+ */
+// ある条件？　条件がtrueの時：条件がfalseの時
+const val1 = 1 > 0 ? 'trueです' : 'falseです';
+console.log(val1); // falseです
+
+// 数値に対してのみ3桁区切りにしてくれる
+const num = 1300;
+console.log(num.toLocaleString()); // 1,300
+
+const num1 = "1300";
+const formattedNum = typeof num1 === 'number' ? num.toLocaleString() : '数値を入力してください';
+console.log(formattedNum); //  数値を入力してください
+
+const checkSum = (num1, num2) => {
+    return num1 + num2 > 100 ? '100を超えています!!' : '許容範囲内です';
 }
+console.log(checkSum(50, 40)); // 許容範囲内です
 
-// nameArrのnameが順番に入って新しい配列として生成される
-// ①returnされた結果に基づいて新しい配列を生成する使い方
-const nameArr2 = nameArr.map((name)=>{
-    return name;
-})
-console.log(nameArr2); // ["田中", "山田", "又吉"]
 
-// ②配列をループで処理するだけのやり方もある
-nameArr.map((name) => console.log(name));
 
-nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`)); // 1番目は田中です
-
-// filter:return文に書いた条件式に当てはまる値を新しく取得できる
-// 配列の中にある値に対してある条件に当てはまる値だけを取り出したい時に使える
-const numArr = [1, 2, 3, 4, 5];
-const newNumArr = numArr.filter((num) => {
-    return num % 2 === 1;
-});
-console.log(newNumArr); // [1, 3, 5]
-
-const newNameArr = nameArr.map((name) => {
-    if (name === "又吉") {
-        return name
-    } else {
-        return `${name}さん`
-    }
-})
-console.log(newNameArr); // ["田中さん", "山田さん", "又吉"]
 
