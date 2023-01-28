@@ -98,3 +98,10 @@ console.log(val1);
 // const { name, age } = myProfile1;
 // const message4 = `名前は${name}です。年齢は${age}歳です。`;
 
+/**
+ * デフォルト値、引数など
+ */
+// (name = 'ゲスト')でゲスト値を設定、関数呼び出しの引数で上書き設定可能
+const sayHello = (name = 'ゲスト') => console.log(`こんにちは!${name}さん！`);
+sayHello("ジャケ");
+
